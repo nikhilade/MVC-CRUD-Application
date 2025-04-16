@@ -7,6 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>I am Add new Employee</h1>
+<jsp:include page="master.jsp"></jsp:include>
+<br><br>
+	<form action="saveemp" name="frm" method="POST">
+		<input type="text" name="name" value="" class="control"><br><br>
+	<input type="text" name="email" value="" class="control"><br><br>
+	<input type="text" name="contact" value="" class="control"><br><br>
+	<input type="submit" name="s" value="Add New Employee" class="control"><br><br>
+	</form>
+	${msg}
 </body>
 </html>

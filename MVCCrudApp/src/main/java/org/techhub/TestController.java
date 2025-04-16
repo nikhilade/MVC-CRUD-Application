@@ -1,12 +1,20 @@
 package org.techhub;
 
-import javax.servlet.http.HttpServletRequest;
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.techhub.model.Employee;
+import org.techhub.service.EmployeeService;
 
 @Controller
 public class TestController {
+	@Autowired
+	EmployeeService empService;
+	
 	@RequestMapping("/")
 	public String test() {
 		return "master";
@@ -14,6 +22,17 @@ public class TestController {
 	
 	@RequestMapping(value = "/addemp")
 	public String addNewEmployee() {
+		return "addemployee";
+	}
+	
+	@RequestMapping(value="/saveemp", method=RequestMethod.POST)
+	public String saveEmployee(Employee employee, Map<String, String> map) {
+		boolean b = empService.isAddNewEmployee(employee);
+		if(b) {
+			map.put("msg", "New Employee Added");
+		}else {
+			map.put("msg", "Employee Not Added");
+		}
 		return "addemployee";
 	}
 }
