@@ -11,7 +11,7 @@
 <body>
 	<ul>
 		<li><a href='addemp'>Add New Employee</a></li>
-		<li><a href=''>View All Employee</a></li>
+		<li><a href='view'>View All Employee</a></li>
 		<li><a href=''>Search Employee</a></li>
 	</ul>
 </body>

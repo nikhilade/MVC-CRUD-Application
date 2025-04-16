@@ -1,6 +1,7 @@
 package org.techhub;
 
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,12 @@ public class TestController {
 			map.put("msg", "Employee Not Added");
 		}
 		return "addemployee";
+	}
+	
+	@RequestMapping("/view")
+	public String viewAllEmp(Map map) {
+		List<Employee> list = empService.getAllEmployee();
+		map.put("empList", list);
+		return "viewallemp";
 	}
 }
