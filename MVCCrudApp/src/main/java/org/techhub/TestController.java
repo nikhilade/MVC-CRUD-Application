@@ -4,10 +4,13 @@ package org.techhub;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.techhub.model.Employee;
 import org.techhub.service.EmployeeService;
 
@@ -41,6 +44,17 @@ public class TestController {
 	public String viewAllEmp(Map map) {
 		List<Employee> list = empService.getAllEmployee();
 		map.put("empList", list);
+		return "viewallemp";
+	}
+	
+	@RequestMapping("/del")
+	public String delEmp(@RequestParam("empid") Integer empid, Map map) {
+		//System.out.println(empid);
+		boolean b = empService.isDeleteEmployee(empid);
+		if(b) {
+			List<Employee> list = empService.getAllEmployee();
+			map.put("empList", list);
+		}
 		return "viewallemp";
 	}
 }

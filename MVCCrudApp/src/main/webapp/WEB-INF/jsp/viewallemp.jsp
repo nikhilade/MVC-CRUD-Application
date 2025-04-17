@@ -10,7 +10,8 @@
 <body>
 	<jsp:include page="master.jsp"/>
 	<br><br>
-	<table border="5" align="center" width="60%">
+	<div class="container p-5">
+		<table class="table table-striped table-dark m-5">
 	
 		<tr>
 			<th>NAME</th>
@@ -24,12 +25,13 @@
 			<td>${employee.getName()}</td>
 			<td>${employee.getEmail()}</td>
 			<td>${employee.getContact()}</td>
-			<td><a href="">DELETE</a></td>
+			<td><a href="del?empid=${employee.getId()}">DELETE</a></td>
 			<td><a href="">UPDATE</a></td>
 			
 		</tr>
 	</c:forEach>
 	</table>
+	</div>
 	
 	
 </body> 

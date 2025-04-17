@@ -50,6 +50,11 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
 		});
 		return list;
 	}
-	
+
+	@Override
+	public boolean isDeleteEmployee(int empid) {
+		return template.update("delete from employee where eid=?", new Object[] {empid})>0?true:false;
+		
+	}
 	
 }

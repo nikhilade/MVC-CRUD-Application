@@ -22,4 +22,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return empRepo.getAllEmployee();
 	}
 
+	@Override
+	public boolean isDeleteEmployee(int empid) {
+		return empRepo.isDeleteEmployee(empid);
+	}
+
 }
