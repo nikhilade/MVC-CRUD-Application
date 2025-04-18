@@ -57,4 +57,25 @@ public class TestController {
 		}
 		return "viewallemp";
 	}
+	
+	@RequestMapping(value="/upd", method=RequestMethod.GET)
+	public String updateEmployee(HttpServletRequest request, Map map) {
+		int empid=Integer.parseInt(request.getParameter("empid"));
+		String name=request.getParameter("empname");
+		String email=request.getParameter("empemail");
+		String contact=request.getParameter("empcontact");
+		map.put("id", empid);
+		map.put("name", name);
+		map.put("email", email);
+		map.put("contact", contact);
+		return "update";
+	}
+	
+	@RequestMapping("/finalupdate")
+	public String finalUpdate(Employee employee, Map map) {
+		empService.isUpdateEmployee(employee);
+		List<Employee> list = empService.getAllEmployee();
+		map.put("empList", list);
+		return "viewallemp";
+	}
 }

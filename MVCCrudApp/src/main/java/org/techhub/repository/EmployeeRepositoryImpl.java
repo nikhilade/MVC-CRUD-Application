@@ -56,5 +56,21 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
 		return template.update("delete from employee where eid=?", new Object[] {empid})>0?true:false;
 		
 	}
+
+	@Override
+	public boolean isUpdateEmployee(Employee employee) {
+		int value = template.update("update employee set name=?,email=?,contact=? where eid=?", new PreparedStatementSetter() {
+
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setString(1, employee.getName());
+				ps.setString(2, employee.getEmail());
+				ps.setString(3, employee.getContact());
+				ps.setInt(4, employee.getId());
+			}
+			
+		});
+		return value>0?true:false;
+	}
 	
 }

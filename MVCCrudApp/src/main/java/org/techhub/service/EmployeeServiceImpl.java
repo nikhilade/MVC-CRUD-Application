@@ -27,4 +27,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return empRepo.isDeleteEmployee(empid);
 	}
 
+	@Override
+	public boolean isUpdateEmployee(Employee employee) {
+		// TODO Auto-generated method stub
+		return empRepo.isUpdateEmployee(employee);
+	}
+
 }

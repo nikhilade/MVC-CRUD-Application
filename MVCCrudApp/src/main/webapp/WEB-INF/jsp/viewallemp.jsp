@@ -26,7 +26,7 @@
 			<td>${employee.getEmail()}</td>
 			<td>${employee.getContact()}</td>
 			<td><a href="del?empid=${employee.getId()}">DELETE</a></td>
-			<td><a href="">UPDATE</a></td>
+			<td><a href="upd?empid=${employee.getId()}&empname=${employee.getName()}&empemail=${employee.getEmail()}&empcontact=${employee.getContact()}">UPDATE</a></td>
 			
 		</tr>
 	</c:forEach>

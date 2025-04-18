@@ -8,4 +8,5 @@ public interface EmployeeService {
 	public boolean isAddNewEmployee(Employee employee);
 	public List<Employee> getAllEmployee();
 	public boolean isDeleteEmployee(int empid);
+	public boolean isUpdateEmployee(Employee employee);
 }
