@@ -72,5 +72,27 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
 		});
 		return value>0?true:false;
 	}
+
+	@Override
+	public List<Employee> getAllEmployeeByName(String name) {
+	    String query = "SELECT * FROM employee WHERE name LIKE ?";
+	    
+	    // Using PreparedStatement to prevent SQL injection
+	    list = template.query(query, new Object[] { "%" + name + "%" }, new RowMapper<Employee>() {
+
+	        @Override
+	        public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
+	            Employee emp = new Employee();
+	            emp.setId(rs.getInt(1));
+	            emp.setName(rs.getString(2));
+	            emp.setEmail(rs.getString(3));
+	            emp.setContact(rs.getString(4));
+	            return emp;
+	        }
+	    });
+	    System.out.println("Found " + list.size() + " employees matching the search.");
+	    
+	    return list;
+	}
 	
 }

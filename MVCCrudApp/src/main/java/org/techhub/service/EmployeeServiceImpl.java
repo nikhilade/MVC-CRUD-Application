@@ -29,8 +29,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	@Override
 	public boolean isUpdateEmployee(Employee employee) {
-		// TODO Auto-generated method stub
 		return empRepo.isUpdateEmployee(employee);
+	}
+
+	@Override
+	public List<Employee> getAllEmployeeByName(String name) {
+		return empRepo.getAllEmployeeByName(name);
 	}
 
 }

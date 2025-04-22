@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.techhub.model.Employee;
 import org.techhub.service.EmployeeService;
 
@@ -75,7 +76,14 @@ public class TestController {
 	public String finalUpdate(Employee employee, Map map) {
 		empService.isUpdateEmployee(employee);
 		List<Employee> list = empService.getAllEmployee();
-		map.put("empList", list);
+		map.put("empList", list); 
 		return "viewallemp";
+	}
+	
+	@RequestMapping("/search")
+	@ResponseBody
+	public List<Employee> searchEmployee(@RequestParam("v") String value) {
+	    List<Employee> list = empService.getAllEmployeeByName(value);
+	    return list;
 	}
 }

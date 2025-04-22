@@ -9,4 +9,5 @@ public interface EmployeeService {
 	public List<Employee> getAllEmployee();
 	public boolean isDeleteEmployee(int empid);
 	public boolean isUpdateEmployee(Employee employee);
+	public List<Employee> getAllEmployeeByName(String name);
 }
